@@ -30,6 +30,6 @@ if __name__ == "__main__":
     data = read_data(args.day, args.test, 1)
     day.solution1(data)
 
-    data = read_data(args.day, args.test, 2)
+    data = read_data(args.day, args.test, 1)
     day.solution2(data)
 

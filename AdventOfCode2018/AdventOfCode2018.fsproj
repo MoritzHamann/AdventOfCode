@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="1/Day1.fs" />
+    <Compile Include="2/Day2.fs" />
+    <Compile Include="3/Day3.fs" />
+    <Compile Include="4/Day4.fs" />
+    <Compile Include="5/Day5.fs" />
+    <Compile Include="6/Day6.fs" />
+    <Compile Include="7/Day7.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>

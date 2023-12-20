@@ -17,8 +17,9 @@
              (filter #(not (empty? %)) $)
              (map #(Integer/parseInt %) $))))
 
-(defn read-boards [lines]
+(defn read-boards
   "Returns the sequence of playing boards, given the sequence of input lines (as strings)"
+  [lines]
   (let [board-input (subvec lines 2)
         board-lines (vec (map parse-board-line board-input))]
     ; group by empty vectors

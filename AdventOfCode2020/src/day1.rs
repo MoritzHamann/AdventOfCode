@@ -9,7 +9,6 @@ fn is2020_by3(a: i32, b: i32, c: i32) -> bool {
     return a + b + c == 2020;
 }
 
- 
 pub fn question1() -> String {
     let input_file = "input/day1.txt";
     let input = input::lines_as::<i32>(input_file);

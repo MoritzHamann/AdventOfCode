@@ -32,7 +32,7 @@
   (->> (windowed 2 test-data)
       (map #(apply - %))
       (filter neg?)
-      count))
+      count)) 
 
 (def day1-1
   (->> (windowed 2 (real-data))
@@ -45,6 +45,8 @@
        (windowed 2)
        (map #(apply - %))
        (filter neg?)
-       count)) 
+       count))
 
-(defn -main [])
+(defn -main []
+  (println day1-1)
+  (println day1-2))

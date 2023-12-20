@@ -48,7 +48,6 @@ def solution2(data):
         _, draws = get_game_data(game)
         max_values = {"red": 0, "blue": 0, "green": 0}
         for draw in draws:
-            print(draw)
             for color, value in draw.items():
                 if value > max_values[color]:
                     max_values[color] = value

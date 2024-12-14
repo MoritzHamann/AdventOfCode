@@ -47,7 +47,7 @@ pub fn question1() -> String {
             trees += 1;
         }
     }
-    return format!("Day2.1: Number of Trees = {}", trees);
+    return format!("Day 3.1: Number of Trees = {}", trees);
 }
 
 pub fn question2() -> String {
@@ -79,5 +79,5 @@ pub fn question2() -> String {
     }
 
     let multiply = results.iter().fold(1u64, |acc, result| acc * result);
-    return format!("Day2.2: Number of Trees = {}", multiply);
+    return format!("Day 3.2: Number of Trees = {}", multiply);
 }

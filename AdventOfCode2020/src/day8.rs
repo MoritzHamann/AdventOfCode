@@ -1,7 +1,7 @@
+use crate::input;
 use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::str::FromStr;
-use crate::input;
 
 #[derive(PartialEq)]
 enum Instruction {
@@ -20,7 +20,7 @@ impl Computer {
     fn parse_instruction(line: &String) -> Instruction {
         let ins = &line[0..3];
         if ins == "acc" {
-            let value  = i16::from_str(&line[4..line.len()]).unwrap();
+            let value = i16::from_str(&line[4..line.len()]).unwrap();
             return Instruction::Acc(value);
         } else if ins == "jmp" {
             let offset = i16::from_str(&line[4..line.len()]).unwrap();
@@ -37,7 +37,7 @@ impl Computer {
             program: program,
             accumulator: 0,
             ip: 0,
-        }
+        };
     }
 
     fn next(&mut self) {
@@ -56,8 +56,8 @@ impl Computer {
         let mut visited = Vec::new();
         visited.resize(self.program.len(), false);
 
-        while self.ip < self.program.len().try_into().unwrap() &&
-                !visited[usize::try_from(self.ip).unwrap()]
+        while self.ip < self.program.len().try_into().unwrap()
+            && !visited[usize::try_from(self.ip).unwrap()]
         {
             visited[usize::try_from(self.ip).unwrap()] = true;
             self.next();
@@ -68,7 +68,6 @@ impl Computer {
         return true;
     }
 }
-
 
 pub fn question1() -> String {
     let filename = "input/day8.txt";
@@ -96,7 +95,7 @@ pub fn question2() -> String {
         match computer.program[last_flip_idx] {
             Instruction::Acc(_) => (),
             Instruction::Jmp(offset) => computer.program[last_flip_idx] = Instruction::NoOp(offset),
-            Instruction::NoOp(offset) => computer.program[last_flip_idx] = Instruction::Jmp(offset)
+            Instruction::NoOp(offset) => computer.program[last_flip_idx] = Instruction::Jmp(offset),
         }
 
         if !computer.has_infinite_loop() {

@@ -43,5 +43,5 @@ pub fn question2() -> String {
             }
         }
     }
-    return "No solution found".to_string();
+    return "No solution found!".to_string();
 }

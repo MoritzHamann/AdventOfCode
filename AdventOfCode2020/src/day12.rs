@@ -1,7 +1,12 @@
 use crate::input;
 
 #[derive(Debug)]
-enum Direction {North, East, South, West}
+enum Direction {
+    North,
+    East,
+    South,
+    West,
+}
 
 #[derive(Debug)]
 enum Action {
@@ -11,7 +16,7 @@ enum Action {
     West,
     Left,
     Right,
-    Forward
+    Forward,
 }
 impl Action {
     fn from_string(str: &char) -> Action {
@@ -23,16 +28,15 @@ impl Action {
             'L' => Action::Left,
             'R' => Action::Right,
             'F' => Action::Forward,
-            _ => panic!("Unknown action {}", str)
+            _ => panic!("Unknown action {}", str),
         };
     }
 }
 
-
 #[derive(Debug)]
 struct Instruction {
     action: Action,
-    value: i32
+    value: i32,
 }
 impl Instruction {
     fn from_string(line: &String) -> Instruction {
@@ -40,23 +44,19 @@ impl Instruction {
         let value = String::from(&line[1..]).parse::<i32>().unwrap();
         Instruction {
             action: action,
-            value: value
+            value: value,
         }
     }
 }
 
-
 #[derive(Debug)]
 struct Waypoint {
     x: i32,
-    y: i32
+    y: i32,
 }
 impl Waypoint {
     fn new(x: i32, y: i32) -> Waypoint {
-        return Waypoint {
-            x: x,
-            y: y
-        }
+        return Waypoint { x: x, y: y };
     }
 
     fn rotate(&mut self, degree: i32) {
@@ -83,26 +83,25 @@ struct Ferry {
     direction: i32,
     x: i32,
     y: i32,
-    waypoint: Waypoint
+    waypoint: Waypoint,
 }
 impl Ferry {
-    fn new(direction: i32, x: i32, y:i32) -> Ferry {
+    fn new(direction: i32, x: i32, y: i32) -> Ferry {
         return Ferry {
             direction: direction,
             x: x,
             y: y,
-            waypoint: Waypoint::new(0, 0)
+            waypoint: Waypoint::new(0, 0),
         };
     }
 
-    fn new_with_waypoint(direction: i32, x: i32, y:i32, waypoint: Waypoint) -> Ferry {
+    fn new_with_waypoint(direction: i32, x: i32, y: i32, waypoint: Waypoint) -> Ferry {
         return Ferry {
             direction: direction,
             x: x,
             y: y,
-            waypoint: waypoint
+            waypoint: waypoint,
         };
-
     }
 
     // Coordinate system:
@@ -166,24 +165,30 @@ impl Ferry {
     }
 }
 
-
 pub fn question1() -> String {
     let filename = "input/day12.txt";
-    let instructions: Vec<Instruction> =
-        input::lines_as::<String>(filename).iter().map(Instruction::from_string).collect();
+    let instructions: Vec<Instruction> = input::lines_as::<String>(filename)
+        .iter()
+        .map(Instruction::from_string)
+        .collect();
     let mut ferry = Ferry::new(90, 0, 0);
 
     for instruction in instructions {
         ferry.follow_instruction(&instruction);
     }
-    
-    return format!("Day 12.1: distance from origin = {}", ferry.manhattan_distance());
+
+    return format!(
+        "Day 12.1: distance from origin = {}",
+        ferry.manhattan_distance()
+    );
 }
 
 pub fn question2() -> String {
     let filename = "input/day12.txt";
-    let instructions: Vec<Instruction> =
-        input::lines_as::<String>(filename).iter().map(Instruction::from_string).collect();
+    let instructions: Vec<Instruction> = input::lines_as::<String>(filename)
+        .iter()
+        .map(Instruction::from_string)
+        .collect();
     let waypoint = Waypoint::new(10, 1);
     let mut ferry = Ferry::new_with_waypoint(0, 0, 0, waypoint);
 
@@ -191,5 +196,9 @@ pub fn question2() -> String {
         ferry.follow_instruction_with_waypoint(instruction);
     }
 
-    return format!("Day 12.2: distance from origin = {}", ferry.manhattan_distance());
+    return format!(
+        "Day 12.2: distance from origin = {}",
+        ferry.manhattan_distance()
+    );
 }
+

@@ -22,7 +22,7 @@
         member this.markFinished() = {this with finished=true}
 
     let part1 instructions =
-        // base map of all nodes
+        // builds the base map of all nodes, setting only the "name"
         let nodeMap =
             instructions
             |> List.collect (fun i -> [i.step; i.requirement])
@@ -39,7 +39,8 @@
                 let map = Map.add i.requirement (preNode.addPosts [i.step]) map
                 let map = Map.add i.step (postNode.addReqs [i.requirement]) map
                 map)
-
+    
+        // find all nodes which can be executed (have no requirements and are not yet done)
         let available nodes =
             Map.toList nodes
             |> List.filter (fun (name, node) -> List.isEmpty node.pre)
@@ -69,7 +70,9 @@
                 advance updatedNodes (List.append nextNodesNames result)
         // find the final ordering
         advance nodeMap [] |> String.concat ""
-        
+ 
+    let part2 instructions =
+        ""
 
     let solution filename =
         let depenencies =
@@ -78,3 +81,4 @@
             |> Seq.toList
 
         part1 depenencies |> printf "%A\n"
+        part2 depenencies |> printf "%A\n"

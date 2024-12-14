@@ -1,0 +1,7 @@
+(library
+ (name aoc2024)
+ (libraries re)
+ (inline_tests)
+ (preprocess (pps ppx_inline_test ppx_expect)))
+
+(env (dev (flags (:standard -warn-error -A))))

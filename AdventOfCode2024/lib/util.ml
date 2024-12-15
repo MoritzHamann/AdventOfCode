@@ -12,6 +12,19 @@ end
 
 module List = struct
 
+    let shift_right ~(until: 'a list -> bool) (element: 'a) (list: 'a list) =
+        let rec loop left right element =
+            let new_list = left @ element::right in
+            match until new_list with
+            | true -> Some new_list
+            | false -> match right with
+                        | [] -> None
+                        | _ -> loop (List.append left [List.hd right]) (List.tl right) element
+        in
+        loop [] list element
+            
+
+
     let transpose list =
         let line_acc (result1, result2) row =
             let first = List.hd row in
@@ -60,6 +73,12 @@ module Input = struct
         Stdlib.List.map Parser.of_string lines
 end
 
+module Print = struct
+    let list ?(endline="\n") fmt l =
+        Stdlib.List.iter (Printf.printf fmt) l;
+        Printf.printf "%s" endline
+end
+
 
 let%test "remove first element from list" =
     let input = [1;2;3;4;5] in
@@ -83,5 +102,49 @@ let%expect_test "split with keep_empty" =
     Stdlib.List.iter (fun s -> Printf.printf "%s," s) output;
     [%expect {| Some,String,,with,,,spaces, |}]
 
-    
+let%expect_test "shift element to right" =
+    let list = [1;2;3] in
+    let checker = (fun l -> Stdlib.List.nth l 1 = 4) in
+    let result = List.shift_right ~until:checker 4 list in
+    match result with
+    | None ->
+        begin
+            Printf.printf "%s" "None";
+            [%expect.unreachable]
+        end
+    | Some l -> begin
+            Print.list "%d," l;
+            [%expect {| 1,4,2,3, |}]
+        end
 
+let%expect_test "shift element to right: unable to fullfill criteria" =
+    let list = [1;2;3] in
+    let checker = (fun l -> Stdlib.List.nth l 1 = 5) in
+    let result = List.shift_right ~until:checker 4 list in
+    match result with
+    | Some l ->
+        begin
+            Print.list "%d," l;
+            [%expect.unreachable]
+        end
+    | None ->
+        begin
+            Printf.printf "%s" "None";
+            [%expect {| None |}]
+        end
+
+let%expect_test "shift element to right: unable to fullfill criteria" =
+    let list = [] in
+    let checker = (fun l -> Stdlib.List.nth l 0 = 4) in
+    let result = List.shift_right ~until:checker 4 list in
+    match result with
+    | Some l ->
+        begin
+            Print.list "%d," l;
+            [%expect {| 4, |}]
+        end
+    | None ->
+        begin
+            Printf.printf "%s" "None";
+            [%expect.unreachable]
+        end

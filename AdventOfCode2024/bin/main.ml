@@ -25,3 +25,8 @@ let () =
     let result = Day4.question2 "input/day4.txt" in
     Printf.printf "Day 4.2: %s\n" result;
 
+    let result = Day5.question1 "input/day5.txt" in
+    Printf.printf "Day 5.1: %s\n" result;
+
+    let result = Day5.question2 "input/day5.txt" in
+    Printf.printf "Day 5.1: %s\n" result;

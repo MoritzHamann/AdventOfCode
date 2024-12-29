@@ -19,7 +19,7 @@ let () =
     let result2 = Day3.question2 () in
     Printf.printf "Day 3.2: %s\n" result2;
 
-    let result = Day4.question1 "input/day4.txt" in
+let result = Day4.question1 "input/day4.txt" in
     Printf.printf "Day 4.1: %s\n" result;
 
     let result = Day4.question2 "input/day4.txt" in
@@ -29,4 +29,16 @@ let () =
     Printf.printf "Day 5.1: %s\n" result;
 
     let result = Day5.question2 "input/day5.txt" in
-    Printf.printf "Day 5.1: %s\n" result;
+    Printf.printf "Day 5.2: %s\n" result;
+
+    (*let result = Day6.question1 "input/day6.txt" in*)
+    (*Printf.printf "Day 6.1: %s\n" result;*)
+    (**)
+    (*let result = Day6.question2 "input/day6.txt" in*)
+    (*Printf.printf "Day 6.2: %s\n" result;*)
+
+    let result = Day7.question1 "input/day7.txt" in
+    Printf.printf "Day 7.1: %s\n" result;
+
+    let result = Day7.question2 "input/day7.txt" in
+    Printf.printf "Day 7.2: %s\n" result;

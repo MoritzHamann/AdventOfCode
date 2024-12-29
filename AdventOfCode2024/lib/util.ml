@@ -23,7 +23,15 @@ module List = struct
         in
         loop [] list element
             
-
+    let chunk num list =
+        let add_to_chunk chunks element =
+            match chunks with
+            | [] -> [[element]]
+            | c::rest when List.length c = num -> [element]::(List.rev c)::rest
+            | c::rest -> (element::c)::rest
+                
+        in
+        List.fold_left add_to_chunk [[]] list |> List.rev
 
     let transpose list =
         let line_acc (result1, result2) row =
@@ -148,3 +156,14 @@ let%expect_test "shift element to right: unable to fullfill criteria" =
             Printf.printf "%s" "None";
             [%expect.unreachable]
         end
+
+let%expect_test "chunk list into two elements" =
+    let input = [1;2;3;4;5] in
+    let chunks = List.chunk 2 input in
+    Stdlib.List.iter (Print.list "%d,") chunks;
+    [%expect {|
+      1,2,
+      3,4,
+      5,
+      |}]
+

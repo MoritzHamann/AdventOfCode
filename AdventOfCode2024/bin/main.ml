@@ -33,12 +33,21 @@ let result = Day4.question1 "input/day4.txt" in
 
     (*let result = Day6.question1 "input/day6.txt" in*)
     (*Printf.printf "Day 6.1: %s\n" result;*)
-    (**)
+   
+    (* TODO: candidate for optimization *)
     (*let result = Day6.question2 "input/day6.txt" in*)
     (*Printf.printf "Day 6.2: %s\n" result;*)
 
     let result = Day7.question1 "input/day7.txt" in
-    Printf.printf "Day 7.1: %s\n" result;
+    Printf.printf "Day 7.1: %s\n%!" result;
 
-    let result = Day7.question2 "input/day7.txt" in
-    Printf.printf "Day 7.2: %s\n" result;
+    (* TODO: candidate for optimization *)
+    (*let result = Day7.question2 "input/day7.txt" in*)
+    (*Printf.printf "Day 7.2: %s\n" result;*)
+
+    let result = Day8.question1 "input/day8.txt" in
+    Printf.printf "Day 8.1: %s\n%!" result;
+
+    (* TODO: candidate for optimization *)
+    let result = Day8.question2 "input/day8.txt" in
+    Printf.printf "Day 8.2: %s\n" result;

@@ -17,7 +17,27 @@ module Make_Operators(Def: OperatorsDef) = struct
     let are_operators_valid (eq: equation) (operators: t list) =
         let first_value = List.hd eq.values in
         let remaining_values = List.tl eq.values in
+
         let intermediate = List.fold_left2 apply first_value remaining_values operators in
+
+        (* optimzed to skip after intermediate value > eq.result, since the operators
+            will only increase the result when applied *)
+        let rec apply_op sum values operators =
+            if sum > eq.result then
+                sum
+            else
+                match (values, operators) with
+                | [], [] -> sum
+                | v::vs, o::os -> begin
+                    let s = apply sum v o in
+                    apply_op s vs os
+                end
+                | _, _ -> failwith "Invalid apply of operations"
+        in
+
+        (* TODO: this gives ~10% speedup *)
+        (*let intermediate = apply_op first_value remaining_values operators in*)
+
         intermediate == eq.result
 
     let next_permutation (previous: t list) =

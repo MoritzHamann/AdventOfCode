@@ -21,7 +21,7 @@ func question1() -> String {
             sum += Int(String(input.last!))!
         }
         return String(sum)
-    } catch  {
+    } catch {
         print("Error", error)
         return ""
     }
@@ -45,7 +45,7 @@ func question2() -> String {
             }
         }
         return String(sum)
-    } catch  {
+    } catch {
         print("Error", error)
         return ""
     }

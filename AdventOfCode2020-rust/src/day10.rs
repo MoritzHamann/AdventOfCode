@@ -32,7 +32,7 @@ pub fn prev_neighbors(idx: usize, input: &Vec<u32>) -> &[u32] {
     return &input[lower_bound..idx];
 }
 
-// using som form of dynamic programming:
+// using some form of dynamic programming:
 // in the sequence of adapters
 // 0|1,2,3,4,7|10
 // 1 can be reached by 0, so number of possibilites = 1

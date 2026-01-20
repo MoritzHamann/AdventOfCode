@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -73,7 +73,7 @@ func part2(input []int) {
 }
 
 func main() {
-	input, _ := ioutil.ReadFile("./input")
+	input, _ := os.ReadFile("./input")
 	content := string(input)
 	program := strings.Split(content, ",")
 	intProgram := make([]int, len(program))

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"io/ioutil"
 	"strconv"
 	"strings"
 
 	"./intProgram"
+	"os"
 )
 
 func part1(program []int) {
@@ -16,7 +16,7 @@ func part1(program []int) {
 }
 
 func main() {
-	input, _ := ioutil.ReadFile("./input")
+	input, _ := os.ReadFile("./input")
 	tokens := strings.Split(string(input), ",")
 	program := make([]int, 0, len(tokens))
 

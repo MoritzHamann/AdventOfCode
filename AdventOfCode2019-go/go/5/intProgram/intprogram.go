@@ -31,21 +31,21 @@ func (c *IntComputer) Reset() {
 	c.ip = 0
 }
 
-func splitIntoNumbers(inputNumber int) []int {
-	numbers := make([]int, 0)
+func splitIntoDigits(inputNumber int) []int {
+	digits := make([]int, 0)
 	for i := 4; i > 1; i-- {
 		exp := int(math.Pow10(i))
-		num := inputNumber / exp
-		numbers = append(numbers, num)
-		inputNumber = inputNumber - (num * exp)
+		digit := inputNumber / exp
+		digits = append(digits, digit)
+		inputNumber = inputNumber - (digit * exp)
 	}
-	numbers = append(numbers, inputNumber)
+	digits = append(digits, inputNumber)
 
-	return numbers
+	return digits
 }
 
 func (c *IntComputer) Step() {
-	instructions := splitIntoNumbers(c.ValueAtMemoryPos(c.ip, 1))
+	instructions := splitIntoDigits(c.ValueAtMemoryPos(c.ip, 1))
 	opCode := instructions[len(instructions)-1]
 	mode1 := instructions[len(instructions)-2]
 	mode2 := instructions[len(instructions)-3]

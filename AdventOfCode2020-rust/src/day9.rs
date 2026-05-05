@@ -136,7 +136,7 @@ pub fn question2() -> String {
 
     let mut lower_bound_idx = 0;
     let mut upper_bound_idx = 0;
-    let mut sum = 0;
+    let mut sum:u64;
 
     while upper_bound_idx < input.len() {
         sum = input[lower_bound_idx..upper_bound_idx+1].iter().sum();

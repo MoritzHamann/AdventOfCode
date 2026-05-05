@@ -1,14 +1,6 @@
 use crate::input;
 
 #[derive(Debug)]
-enum Direction {
-    North,
-    East,
-    South,
-    West,
-}
-
-#[derive(Debug)]
 enum Action {
     North,
     East,

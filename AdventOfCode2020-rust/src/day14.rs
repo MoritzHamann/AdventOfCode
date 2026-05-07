@@ -176,7 +176,7 @@ pub fn question1() -> String {
     }
 
     let solution = memory.iter().fold(0, |acc, (_, v)| acc + v);
-    return format!("Sum of memory values = {}", solution);
+    return format!("Day 14.1: Sum of memory values = {}", solution);
 }
 
 pub fn question2() -> String {
@@ -198,9 +198,10 @@ pub fn question2() -> String {
     }
 
     let solution = memory.iter().fold(0, |acc, (_, v)| acc + v);
-    return format!("Sum of memory values = {}", solution);
+    return format!("Day 14.2: Sum of memory values = {}", solution);
 }
 
+#[cfg(test)]
 mod tests {
     use super::*;
 

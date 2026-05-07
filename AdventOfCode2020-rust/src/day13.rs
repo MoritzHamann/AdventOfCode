@@ -150,14 +150,14 @@ fn parse_input() -> (u64, Vec<Bus>) {
 pub fn question1() -> String {
     let (start_time, buses) = parse_input();
     let solution = solution_1(start_time, &buses);
-    return format!("Wait time * bus ID = {}", solution);
+    return format!("Day 13.1: Wait time * bus ID = {}", solution);
 }
 
 pub fn question2() -> String {
     let (start_time, buses) = parse_input();
     let earliest_time = solution_2(start_time, &buses);
     return format!(
-        "Earliest start time for sequential departure: {}",
+        "Day 13.2: Earliest start time for sequential departure: {}",
         earliest_time
     );
 }

@@ -101,13 +101,13 @@ fn solution_2(start_time: u64, buses: &Vec<Bus>) -> u64 {
     let maximum_time = bus_offsets.iter().fold(1u64, |acc, (_, id)| acc * id);
 
     // just some debug information about the iterations
-    let largest_bus_id = bus_offsets[0].1;
-    println!(
-        "Number of maximum iterations: {} / {} = {}",
-        maximum_time,
-        largest_bus_id,
-        maximum_time / largest_bus_id
-    );
+    // let largest_bus_id = bus_offsets[0].1;
+    // println!(
+    //     "Number of maximum iterations: {} / {} = {}",
+    //     maximum_time,
+    //     largest_bus_id,
+    //     maximum_time / largest_bus_id
+    // );
 
     // sieve iteration over all possible numbers from 0 .. product(bus ids)
     let mut earliest_start = 0;
@@ -122,7 +122,7 @@ fn solution_2(start_time: u64, buses: &Vec<Bus>) -> u64 {
     }
 
     // how long did we actually iterate?
-    println!("Number of iterations: {}", it);
+    // println!("Number of iterations: {}", it);
 
     // the number we're looking for is now: t = earliest_start + maximum_number * k
     // if the provided start_time is < maximum number we need to scale by an integer k

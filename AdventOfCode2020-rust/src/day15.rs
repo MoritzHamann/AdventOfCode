@@ -87,7 +87,7 @@ pub fn question1() -> String {
     let mut state = GameState::new();
     
     state.seed_vector(&data);
-    format!("The 2020th number is {}", state.get_number(2020))
+    format!("Day 15.1: The 2020th number is {}", state.get_number(2020))
 }
 
 // TODO: this takes a few seconds, but my intution says this should be faster
@@ -100,7 +100,7 @@ pub fn question2() -> String {
     let mut state = GameState::new();
     
     state.seed_vector(&data);
-    format!("The 30000000th number is {}", state.get_number(30000000))
+    format!("Day 15.2: The 30000000th number is {}", state.get_number(30000000))
 }
 
 #[cfg(test)]

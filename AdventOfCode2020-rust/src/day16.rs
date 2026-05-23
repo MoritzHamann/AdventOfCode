@@ -1,5 +1,3 @@
-use core::error;
-
 use crate::input;
 use regex::Regex;
 
@@ -12,7 +10,6 @@ struct Range {
 #[derive(PartialEq, Debug)]
 struct Rule {
     label: String,
-
     ranges: (Range, Range),
 }
 
@@ -105,21 +102,6 @@ pub fn question2() -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    fn test_data() -> &'static str {
-        "class: 1-3 or 5-7
-        row: 6-11 or 33-44
-        seat: 13-40 or 45-50
-
-        your ticket:
-        7,1,14
-
-        nearby tickets:
-        7,3,47
-        40,4,50
-        55,2,20
-        38,6,12"
-    }
 
     #[test]
     fn test_rule_parsing() {

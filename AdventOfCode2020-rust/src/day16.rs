@@ -1,3 +1,5 @@
+use std::iter::Product;
+
 use crate::input;
 use regex::Regex;
 
@@ -96,7 +98,9 @@ pub fn question1() -> String {
 }
 
 pub fn question2() -> String {
-    unimplemented!()
+    let problem = Problem::from_file("input/day16.txt");
+    let mut error_rate = 0u32;
+
 }
 
 #[cfg(test)]
